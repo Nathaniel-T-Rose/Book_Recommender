@@ -8,8 +8,8 @@ from fake_useragent import UserAgent
 
 
 ua = UserAgent()
-gpt_key = "sk-proj-S9lu4j3n97ed16y32aH0T3BlbkFJT7baIO4mHx5waDlK9Uqb"
-google_books_key = 'AIzaSyAkziXg8-suW-ep6oFMXEpMcf43gjMNh8w'
+gpt_key = 'openai key'
+google_books_key = 'google books key'
 
 headers = {
         "User-Agent": ua.firefox,
