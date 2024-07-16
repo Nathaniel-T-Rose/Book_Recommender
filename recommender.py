@@ -1,16 +1,17 @@
-import json
-import requests
+import json,requests,os
 from langchain_openai import ChatOpenAI
 from langchain.schema import HumanMessage, SystemMessage
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from fake_useragent import UserAgent
-
+from dotenv import load_dotenv
 
 
 ua = UserAgent()
-gpt_key = 'unique open ai key'
-google_books_key = 'unique google books key'
-
+load_dotenv()
+gpt_key = os.getenv('OPEN_AI_KEY')
+print(gpt_key)
+google_books_key = os.getenv('GOOGLE_API_KEY')
+print(google_books_key)
 headers = {
         "User-Agent": ua.firefox,
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
@@ -98,7 +99,7 @@ def getRecsData(recs):
             desc = data['volumeInfo']['description']
             images=data['volumeInfo']['imageLinks']
             book['synopsis']=desc
-            book['images']=images
+            book['image']=images['thumbnail']
         else:
             print('could not locate title')
     return recs
